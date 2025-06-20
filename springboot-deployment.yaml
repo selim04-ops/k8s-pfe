@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+namespace: default
 metadata:
   name: springboot-app
 spec:
@@ -27,6 +28,7 @@ spec:
 ---
 apiVersion: v1
 kind: Service
+namespace: default
 metadata:
   name: springboot-service
 spec:
