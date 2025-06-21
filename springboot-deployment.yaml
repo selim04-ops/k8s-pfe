@@ -20,11 +20,38 @@ spec:
         - containerPort: 8888
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://197.1.112.42:3306/pfedb"
+          value: "jdbc:mysql://192.168.1.100:3306/pfedb"
         - name: SPRING_DATASOURCE_USERNAME
-          value: "root"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: username
         - name: SPRING_DATASOURCE_PASSWORD
-          value: "salim"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: password
+
+      - name: openvpn
+        image: dperson/openvpn-client
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        volumeMounts:
+        - name: vpn-credentials
+          mountPath: "/vpn"
+        args:
+        - "-v"
+        - "-r 192.168.1.100/32"
+        - "-d"
+        - "-f /vpn/ca.crt,/vpn/client.crt,/vpn/client.key"
+        - "162.120.187.253"  # <-- Replace with your actual router IP
+
+      volumes:
+      - name: vpn-credentials
+        secret:
+          secretName: vpn-credentials
+
 ---
 apiVersion: v1
 kind: Service
