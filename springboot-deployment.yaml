@@ -22,36 +22,9 @@ spec:
         - name: SPRING_DATASOURCE_URL
           value: "jdbc:mysql://10.106.156.196:3306/pfedb"
         - name: SPRING_DATASOURCE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mysql-credentials
-              key: username
+          value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-credentials
-              key: password
-
-      - name: openvpn
-        image: dperson/openvpn-client
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN"]
-        volumeMounts:
-        - name: vpn-credentials
-          mountPath: "/vpn"
-        args:
-        - "-v"
-        - "-r 192.168.1.100/32"
-        - "-d"
-        - "-f /vpn/ca.crt,/vpn/client.crt,/vpn/client.key"
-        - "162.120.187.253"  # <-- Replace with your actual router IP
-
-      volumes:
-      - name: vpn-credentials
-        secret:
-          secretName: vpn-credentials
-
+          value: "salim"
 ---
 apiVersion: v1
 kind: Service
@@ -66,3 +39,6 @@ spec:
     nodePort: 30007
   selector:
     app: springboot-app
+
+
+
