@@ -20,24 +20,11 @@ spec:
         - containerPort: 8888
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://192.168.1.100:3306/pfedb?useSSL=false"
+          value: "jdbc:mysql://197.238.138.52:3306/pfedb"
         - name: SPRING_DATASOURCE_USERNAME
           value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
           value: "salim"
-      - name: openvpn-client
-        image: dperson/openvpn-client:latest
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN"]
-        volumeMounts:
-        - name: openvpn-config
-          mountPath: "/vpn"
-        command: ["/usr/sbin/openvpn", "--config", "/vpn/client.ovpn"]
-      volumes:
-      - name: openvpn-config
-        secret:
-          secretName: openvpn-client
 ---
 apiVersion: v1
 kind: Service
@@ -52,6 +39,3 @@ spec:
     nodePort: 30007
   selector:
     app: springboot-app
-
-
-
