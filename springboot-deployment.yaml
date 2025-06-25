@@ -33,7 +33,7 @@ spec:
         volumeMounts:
         - name: openvpn-config
           mountPath: "/vpn"
-        command: ["usr/sbin/openvpn", "--config", "/vpn/client.ovpn"]
+        command: ["/usr/sbin/openvpn", "--config", "/vpn/client.ovpn"]
       volumes:
       - name: openvpn-config
         secret:
