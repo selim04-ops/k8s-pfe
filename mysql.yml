@@ -1,1 +1,45 @@
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqlmysql
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysqlmysql
+  template:
+    metadata:
+      labels:
+        app: mysqlmysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "salim"
+            - name: MYSQL_DATABASE
+              value: "pfedb"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: mysql-pvcc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqlmysql
+spec:
+  selector:
+    app: mysqlmysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+  type: ClusterIP
