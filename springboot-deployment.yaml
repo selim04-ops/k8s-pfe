@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: salimbouazizi/pfe_backend:0.0.2
+        image: salimbouazizi/pfe_backend_image:0.0.1  
         ports:
         - containerPort: 8888
         env:
