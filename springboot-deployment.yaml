@@ -26,7 +26,7 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           value: "salim"
         - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-           value: org.hibernate.dialect.MySQLDialect
+          value: org.hibernate.dialect.MySQLDialect
         - name: SPRING_MAIL_HOST
           value: smtp.gmail.com
         - name: SPRING_MAIL_PORT
