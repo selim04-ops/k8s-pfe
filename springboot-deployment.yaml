@@ -20,13 +20,11 @@ spec:
         - containerPort: 8888
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://mysqlmysql:3306/pfedb"
+          value: "jdbc:mysql://10.107.19.144:3306/pfedb"
         - name: SPRING_DATASOURCE_USERNAME
           value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
           value: "salim"
-        - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-          value: org.hibernate.dialect.MySQLDialect
         - name: SPRING_MAIL_HOST
           value: smtp.gmail.com
         - name: SPRING_MAIL_PORT
