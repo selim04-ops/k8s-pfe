@@ -15,27 +15,28 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: salimbouazizi/pfe_backend_image:0.0.1  
+        image: salimbouazizi/pfe_backend_image:0.0.1
         ports:
         - containerPort: 8888
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://mysqlmysql.cluster.svc:3306/pfedb"
+          value: "jdbc:mysql://mysqlmysql.default.svc:3306/pfedb"
         - name: SPRING_DATASOURCE_USERNAME
           value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
           value: "salim"
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: default
   name: springboot-service
+  namespace: default
 spec:
   type: NodePort
-  ports:
-  - port: 8888
-    targetPort: 8888
-    nodePort: 30007
   selector:
     app: springboot-app
+  ports:
+    - port: 8888
+      targetPort: 8888
+      nodePort: 30007
