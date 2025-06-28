@@ -14,31 +14,32 @@ spec:
         app: springboot-app
     spec:
       containers:
-        - name: springboot-app
-          image: salimbouazizi/pfe_backend_image:0.0.1
-          ports:
-            - containerPort: 8888
-          env:
-            - name: SPRING_DATASOURCE_URL
-              value: "jdbc:mysql://10.107.19.144:3306/pfedb"
-            - name: SPRING_DATASOURCE_USERNAME
-              value: "root"
-            - name: SPRING_DATASOURCE_PASSWORD
-              value: "salim"
-            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-              value: org.hibernate.dialect.MySQL8Dialect
-            - name: SPRING_MAIL_HOST
-              value: smtp.gmail.com
-            - name: SPRING_MAIL_PORT
-              value: "587"
-            - name: SPRING_MAIL_USERNAME
-              value: salimbouazizi42@gmail.com
-            - name: SPRING_MAIL_PASSWORD
-              value: ivvs cuos auaj ivpe
-            - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH
-              value: "true"
-            - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE
-              value: "true"
+      - name: springboot-app
+        image: salimbouazizi/pfe_backend_image:0.0.1
+        ports:
+        - containerPort: 8888
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:mysql://mysqlmysql:3306/pfedb"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "root"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "salim"
+        # Removed deprecated dialect or you can uncomment and update:
+        # - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+        #   value: org.hibernate.dialect.MySQLDialect
+        - name: SPRING_MAIL_HOST
+          value: smtp.gmail.com
+        - name: SPRING_MAIL_PORT
+          value: "587"
+        - name: SPRING_MAIL_USERNAME
+          value: salimbouazizi42@gmail.com
+        - name: SPRING_MAIL_PASSWORD
+          value: ivvs cuos auaj ivpe
+        - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH
+          value: "true"
+        - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE
+          value: "true"
       restartPolicy: Always
 ---
 apiVersion: v1
