@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana
-  namespace: monitoring
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -24,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana-service
-  namespace: monitoring
+  namespace: default
 spec:
   type: NodePort
   ports:
