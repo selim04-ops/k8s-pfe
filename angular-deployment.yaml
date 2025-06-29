@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: angular-app
-        image: salimbouazizi/pfe_frontend:0.0.1
+        image: salimbouazizi/pfe_frontend_image:0.0.5
         ports:
         - containerPort: 80
 ---
