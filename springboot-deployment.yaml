@@ -20,7 +20,7 @@ spec:
         - containerPort: 8888
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://mysqlmysql.default.svc.cluster.local:3306/pfedb"
+          value: "jdbc:mysql://10.108.74.126:3306/pfedb"
         - name: SPRING_DATASOURCE_USERNAME
           value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
