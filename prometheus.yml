@@ -10,7 +10,7 @@ data:
     scrape_configs:
       - job_name: 'springboot-app'
         static_configs:
-          - targets: ['springboot-service.default.svc.cluster.local:8888']
+          - targets: [10.99.57.119:8888']
       - job_name: 'mysqlmysql'
         static_configs:
           - targets: ['mysqlmysql.default.svc.cluster.local:3306']
